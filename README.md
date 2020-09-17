@@ -13,7 +13,7 @@ We'll use the same database as we did yesterday but this new initialization will
 * Make sure you've selected the "admin" database in MySQL Workbench
 
 * Create a new query tab
-  * Click the button on the top left that has a SQL file with a "plus" icon on it
+  * Click the button on the top left that has a SQL file with a "plus" icon on itmysqmysq
 
 * Click the folder icon in your query tab to open a new file
 
@@ -38,19 +38,24 @@ We are going to run a couple SQL queries and put the answers in the "Query Respo
 
 ## Query Responses
 
-1. Sums
-  * AK:
-  * CT
-  * TX:
-  * WY:
+1. Sums -- select sum(users.id) from users join usersAddress on usersAddress.user_id=users.id where usersAddress.state = ""
+
+  * AK: 1422
+  * CT: 999
+  * TX: 7908
+  * WY: 1271
 
 2.
-  * Area code:
+SELECT substr(phone1, 1, 3) as areacode, count(substring(phone1, 1, 3)) as popularity from usersContact Group by areaCode order by popularity DESC
+**do same thing using phone2**
+  * Area code: 973
 
 3.
-  * first_name:
-  * county:
-  * county total:
+SELECT min(users.first_name), usersAddress.county, count(usersAddress.county) FROM usersAddress JOIN users ON usersAddress.user_id = users.id GROUP BY usersAddress.county HAVING count(county)>10
+
+  * first_name: Alaine
+  * county: Orange
+  * county total: 11
 
 
 ## Summary
